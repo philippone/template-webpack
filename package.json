@@ -3,16 +3,24 @@
   "version": "1.0.0",
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "css-loader": "^6.7.1",
-    "mini-css-extract-plugin": "^2.6.0",
-    "svelte": "^4.0.0",
-    "svelte-loader": "^3.1.9",
-    "webpack": "^5.70.0",
+    "css-loader": "^7.1.2",
+    "mini-css-extract-plugin": "^2.9.1",
+    "svelte": "^5.0.0-next.260",
+    "svelte-loader": "^3.2.3",
+    "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.15.1"
+    "webpack-dev-server": "^5.1.0",
+    "ts-loader": "^9.5.1",
+    "@tsconfig/svelte": "^5.0.4",
+    "@types/node": "^22.7.4",
+    "svelte-check": "^4.0.4",
+    "svelte-preprocess": "^6.0.3",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
-    "dev": "webpack serve"
+    "dev": "webpack serve",
+    "validate": "svelte-check"
   }
 }
