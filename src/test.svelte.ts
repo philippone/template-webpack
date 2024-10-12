@@ -1,5 +1,5 @@
 export class TestClass {
-  private state = $state(0);
+  public state = $state(1);
 
   constructor() {}
 
@@ -7,3 +7,5 @@ export class TestClass {
     this.state++;
   }
 }
+
+export const testState = $state(42);

@@ -1,9 +1,11 @@
 <script lang="ts">
-  import { TestClass } from "./test.svelte";
+  import { TestClass, testState } from "./test.svelte";
 
   let { name }: { name: string } = $props();
 
   const test = new TestClass();
+
+  console.log({ testState });
 </script>
 
 <main>
@@ -12,6 +14,9 @@
     Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
     how to build Svelte apps.
   </p>
+
+  {testState}
+  {test.state}
 </main>
 
 <style>

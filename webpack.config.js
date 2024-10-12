@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { default: test } = require("node:test");
 const path = require("path");
 const sveltePreprocess = require("svelte-preprocess");
 
@@ -21,34 +22,20 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.ts$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-      },
       // This is only needed if you use Svelte 5+ with TypeScript
       {
         test: /\.svelte\.ts$/,
-        use: ["ts-loader", "svelte-loader"],
+        use: ["svelte-loader", "ts-loader"],
+      },
+      {
+        test: /(?<!\.svelte)\.ts$/,
+        loader: "ts-loader",
+        exclude: /node_modules/,
       },
       {
         // Svelte 5+:
         test: /\.(svelte|svelte\.js)$/,
-        // Svelte 3 or 4:
-        // test: /\.svelte$/,
-        // In case you write Svelte in HTML (not recommended since Svelte 3):
-        // test: /\.(html|svelte)$/,
-        use: {
-          loader: "svelte-loader",
-          options: {
-            compilerOptions: {
-              dev: !prod,
-            },
-            emitCss: prod,
-            hotReload: !prod,
-            preprocess: sveltePreprocess({ sourceMap: !prod }),
-          },
-        },
+        loader: "svelte-loader",
       },
       {
         // required to prevent errors from Svelte on Webpack 5+, omit on Webpack 4
